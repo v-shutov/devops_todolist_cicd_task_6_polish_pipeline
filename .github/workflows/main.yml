@@ -10,10 +10,12 @@ on:
   workflow_dispatch:
     inputs:
       OsType:
+        description: 'Run on'
         required: true
         type: choice
         options: ['windows', 'ubuntu']
       PythonVersion:
+        description: 'Python ver.'
         required: true
         type: choice
         options: ['3.8', '3.9']
