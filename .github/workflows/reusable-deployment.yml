@@ -46,7 +46,7 @@ jobs:
           path: .
 
       - name: Install wget for windows
-        if: inputs.OsType == 'windows-latest'
+        if: inputs.OsType == 'windows'
         run: choco install wget -y
 
       - name: Set Up Helm
