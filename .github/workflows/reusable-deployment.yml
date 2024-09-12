@@ -18,31 +18,33 @@ on:
         default: todoapp
         type: string
       OsType:
-        default: 'ubuntu-latest'
+        required: true
+        default: 'ubuntu'
         type: string
       PythonVersion:
+        required: true
         default: '3.8'
         type: string
 jobs:
     deploy-helm:
       name: ${{ inputs.environment }}
-      runs-on: ${{ inputs.OsType }}
+      runs-on: ${{ inputs.OsType }}-latest
       environment: ${{ inputs.environment }}
 
       steps:
       - uses: actions/download-artifact@v4
         with:
-          name: helm-package-${{ inputs.OsType }}-${{ inputs.PythonVersion }}
+          name: helm-package-${{ inputs.OsType }}-latest-${{ inputs.PythonVersion }}
           path: .
 
       - uses: actions/download-artifact@v4
         with:
-          name: helm-artifacts-${{ inputs.OsType }}-${{ inputs.PythonVersion }}
+          name: helm-artifacts-${{ inputs.OsType }}-latest-${{ inputs.PythonVersion }}
           path: .
 
       - uses: actions/download-artifact@v4
         with:
-          name: kind-cluster-${{ inputs.OsType }}-${{ inputs.PythonVersion }}
+          name: kind-cluster-${{ inputs.OsType }}-latest-${{ inputs.PythonVersion }}
           path: .
 
       - name: Set Up Helm
