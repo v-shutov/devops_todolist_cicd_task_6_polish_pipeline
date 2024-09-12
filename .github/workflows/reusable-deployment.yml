@@ -19,11 +19,9 @@ on:
         type: string
       OsType:
         required: true
-        default: 'ubuntu'
         type: string
       PythonVersion:
         required: true
-        default: '3.8'
         type: string
 jobs:
     deploy-helm:
