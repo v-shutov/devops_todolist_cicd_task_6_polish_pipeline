@@ -150,7 +150,7 @@ jobs:
       environment: development
       version: ${{ github.sha }}
       OsType: ${{ github.event.inputs.OsType || 'ubuntu'}}
-      PythonVersion: ${{ github.event.inputs.PythonVersion }}
+      PythonVersion: ${{ github.event.inputs.PythonVersion || '3.8' }}
 
   deploy-helm-stg:
     name: Deploy helm to Staging
@@ -161,6 +161,6 @@ jobs:
       environment: staging
       version: ${{ github.sha }}
       OsType: ${{ github.event.inputs.OsType || 'ubuntu'}}
-      PythonVersion: ${{ github.event.inputs.PythonVersion }}
+      PythonVersion: ${{ github.event.inputs.PythonVersion || '3.8' }}
       helm-values-path: ./todoapp/values/stg.yaml
       helm-release-name: todoapp-staging
