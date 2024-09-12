@@ -45,6 +45,10 @@ jobs:
           name: kind-cluster-${{ inputs.OsType }}-latest-${{ inputs.PythonVersion }}
           path: .
 
+      - name: Install wget for windows
+        if: inputs.OsType == 'windows-latest'
+        run: choco install wget -y
+
       - name: Set Up Helm
         uses: azure/setup-helm@v4.2.0
 
