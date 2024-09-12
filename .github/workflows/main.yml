@@ -160,7 +160,7 @@ jobs:
     with:
       environment: staging
       version: ${{ github.sha }}
-      OsType: ${{ github.event.inputs.OsType }}
+      OsType: ${{ github.event.inputs.OsType }}-latest
       PythonVersion: ${{ github.event.inputs.PythonVersion }}
       helm-values-path: ./todoapp/values/stg.yaml
       helm-release-name: todoapp-staging

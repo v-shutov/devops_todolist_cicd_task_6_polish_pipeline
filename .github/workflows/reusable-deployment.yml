@@ -18,7 +18,7 @@ on:
         default: todoapp
         type: string
       OsType:
-        default: 'ubuntu'
+        default: 'ubuntu-latest'
         type: string
       PythonVersion:
         default: '3.8'
@@ -26,7 +26,7 @@ on:
 jobs:
     deploy-helm:
       name: ${{ inputs.environment }}
-      runs-on: ${{ inputs.OsType }}-latest
+      runs-on: ${{ inputs.OsType }}
       environment: ${{ inputs.environment }}
 
       steps:
