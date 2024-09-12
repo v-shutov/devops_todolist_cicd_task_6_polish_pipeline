@@ -22,6 +22,7 @@ concurrency:
  group: ${{ github.workflow }}-${{ github.ref }}
  cancel-in-progress: true
 
+ 
 jobs:
   python-ci:
     strategy:
@@ -72,14 +73,14 @@ jobs:
           path: .
 
       - name: Upload helm artifacts
-        if: github.ref_name == 'develop'
+        if: github.ref_name == 'main'
         uses: actions/upload-artifact@v4
         with:
           name: helm-artifacts-${{ matrix.OsType }}-${{ matrix.PythonVersion }}
           path: ${{ github.workspace }}/helm-charts
 
       - name: Upload kind cluster artifact
-        if: github.ref_name == 'develop'
+        if: github.ref_name == 'main'
         uses: actions/upload-artifact@v4
         with:
           name: kind-cluster-${{ matrix.OsType }}-${{ matrix.PythonVersion }}
